@@ -2,7 +2,11 @@ import StopWatch from "./StopWatch.jsx"
 
 function App() {
     return(
-        <StopWatch />
+        <div>
+            <StopWatch />
+            <StopWatch />
+            <StopWatch />
+        </div>
     );
 }
 
