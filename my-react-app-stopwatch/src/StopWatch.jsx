@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useRef} from "react";
 
 function StopWatch() {
-
     // will determine if stopwatch is running or not; initial state is not running
     const [isRunning, setIsRunning] = useState(false);
     // keeps track of how much time has elapsed; initial state will be 0ms
@@ -19,17 +18,22 @@ function StopWatch() {
 
     // this function will handle starting the time
     function start() {
-
+        // set the state of isRunning to be true (timer starts)
+        setIsRunning(true);
+        // now - start time = how long we've been running
+        startTimeRef.current = Date.now() - elapsedTime;
     }
 
     // this function will handle stopping the time
     function stop() {
-
+        // set the state of isRunning to be false (timer stops)
+        setIsRunning(false);
     }
 
     // this function will handle resetting the time
     function reset() {
-
+        setElapsedTime(0); // resets time back to zero (initial state)
+        setIsRunning(false); // timer stops
     }
 
     // this function will handle formatting the time
