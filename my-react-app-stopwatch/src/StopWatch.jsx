@@ -13,7 +13,19 @@ function StopWatch() {
     // when we mount our component and if isRunning ever changes, we perform whatever code is in useEffect
     // this is where we start our interval (move time forward)
     useEffect(() => {
-
+        // check if isRunning is true
+        if(isRunning) {
+            // create inteval to move time forward
+            intervalIdRef.current = setInterval(() => {
+                // set the elapsed time to be the time right now minus the time we started
+                setElapsedTime(Date.now() - startTimeRef.current);
+            }, 10); // repeats every 10ms
+        }
+        // clean up function to avoid unexpected behavior
+        return() => {
+            // clears the interval so the program stops working
+            clearInterval(intervalIdRef.current);
+        }
     }, [isRunning]);
 
     // this function will handle starting the time
